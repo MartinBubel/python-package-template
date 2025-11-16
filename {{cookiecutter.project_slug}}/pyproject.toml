@@ -1,0 +1,92 @@
+# ======================================================================================
+# Project Metadata
+# ======================================================================================
+[project]
+name = "{{ cookiecutter.project_slug }}"
+version = "0.1.0"
+description = "{{ cookiecutter.project_description }}"
+readme = "README.md"
+authors = [
+    { name = "{{ cookiecutter.author_name }}", email = "{{ cookiecutter.author_email }}" }
+]
+requires-python = ">={{ cookiecutter.python_version }}"
+# Add your runtime dependencies here, for example:
+# dependencies = [
+#     "requests>=2.30"
+# ]
+
+# ======================================================================================
+# Script Entrypoints (for command-line tools)
+# ======================================================================================
+[project.scripts]
+# This creates a command-line script. For example, if project_slug is "gp_mutations",
+# running `gp_mutations` in the terminal will execute the `main` function in `__main__.py`.
+"{{ cookiecutter.project_slug }}" = "{{ cookiecutter.project_slug }}.__main__:main"
+
+# ======================================================================================
+# Build System
+# ======================================================================================
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+# ======================================================================================
+# Development Dependencies (using the standard PEP 621 `optional-dependencies`)
+# ======================================================================================
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.6.0",
+    "mypy>=1.10.0",
+    "pytest>=7.0",
+    "pre-commit>=3.5.0",
+]
+
+# ======================================================================================
+# Ruff Linter and Formatter Configuration
+# ======================================================================================
+[tool.ruff]
+target-version = "py{{ cookiecutter.python_version.replace('.', '') }}"
+line-length = 100
+include = ["**/*.py"]
+
+[tool.ruff.lint]
+# E/F/W (pycodestyle/pyflakes), B (flake8-bugbear), I (isort), UP (pyupgrade),
+# PT (pytest), PL (pylint subset), RUF (Ruff-specific)
+select = ["E", "F", "W", "B", "I", "UP", "PT", "PL", "RUF"]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]  # allow re-export patterns
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "lf"
+docstring-code-format = true
+docstring-code-line-length = 100
+
+# ======================================================================================
+# MyPy Static Type Checker Configuration
+# ======================================================================================
+[tool.mypy]
+python_version = "{{ cookiecutter.python_version }}"
+strict = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+warn_return_any = true
+disallow_untyped_defs = true
+# Tell mypy where your source code is. This is now generic.
+packages = ["src.{{ cookiecutter.project_slug }}"]
+# For complex monorepos, you might need: namespace_packages = true, explicit_package_bases = true
+ignore_missing_imports = true
+exclude = ["tests/"]
+cache_dir = ".mypy_cache"
+
+# ======================================================================================
+# Pytest Configuration
+# ======================================================================================
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-q"
+# A more standard test path for a single-package project
+testpaths = ["tests"]

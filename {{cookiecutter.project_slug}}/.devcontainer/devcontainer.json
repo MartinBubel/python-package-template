@@ -1,0 +1,25 @@
+{
+  "name": "{{ cookiecutter.project_name }}",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "workspaceFolder": "/workspace",
+  "containerEnv": {
+    "UV_LINK_MODE": "copy"
+  }{% if cookiecutter.container_system == 'Podman' %},
+  "runArgs": [
+    "--userns=keep-id"
+  ]
+  {% endif %},
+  "postCreateCommand": "echo 'Container is ready!' && python --version && uv --version",
+  "shutdownAction": "stopContainer",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.debugpy",
+        "charliermarsh.ruff"
+      ]
+    }
+  }
+}
