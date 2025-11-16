@@ -11,7 +11,7 @@
     "--userns=keep-id"
   ]
   {% endif %},
-  "postCreateCommand": "echo 'Container is ready!' && python --version && uv --version",
+  "postCreateCommand": "./.devcontainer/postCreateCommand.sh",
   "shutdownAction": "stopContainer",
   "customizations": {
     "vscode": {
