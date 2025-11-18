@@ -2,7 +2,7 @@
 # Project Metadata
 # ======================================================================================
 [project]
-name = "{{ cookiecutter.project_slug }}"
+name = "{{ cookiecutter.project_name }}"
 version = "0.1.0"
 description = "{{ cookiecutter.project_description }}"
 readme = "README.md"
@@ -17,11 +17,12 @@ requires-python = ">={{ cookiecutter.python_version }}"
 
 # ======================================================================================
 # Script Entrypoints (for command-line tools)
+# (deactivated atm. as only used for packages)
 # ======================================================================================
-[project.scripts]
+# [project.scripts]
 # This creates a command-line script. For example, if project_slug is "gp_mutations",
 # running `gp_mutations` in the terminal will execute the `main` function in `__main__.py`.
-"{{ cookiecutter.project_slug }}" = "{{ cookiecutter.project_slug }}.__main__:main"
+# {{ cookiecutter.project_slug }}" = "{{ cookiecutter.project_slug }}.__main__:main"
 
 # ======================================================================================
 # Build System
@@ -38,7 +39,9 @@ dev = [
     "ruff>=0.6.0",
     "mypy>=1.10.0",
     "pytest>=7.0",
+    {% if cookiecutter.pre_commit_hooks == "Yes" %}
     "pre-commit>=3.5.0",
+    {% endif %}
 ]
 
 # ======================================================================================
