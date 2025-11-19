@@ -3,14 +3,14 @@
   "build": {
     "dockerfile": "Dockerfile"
   },
+  "remoteUser": "root",
   "workspaceFolder": "/workspace",
   "containerEnv": {
     "UV_LINK_MODE": "copy"
-  }{% if cookiecutter.container_system == 'Podman' %},
-  "runArgs": [
-    "--userns=keep-id"
-  ]
-  {% endif %},
+  },
+  "mounts": [
+    "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
+  ],
   "postCreateCommand": "./.devcontainer/postCreateCommand.sh",
   "shutdownAction": "stopContainer",
   "customizations": {

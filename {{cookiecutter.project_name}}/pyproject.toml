@@ -32,9 +32,9 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 # ======================================================================================
-# Development Dependencies (using the standard PEP 621 `optional-dependencies`)
+# Dependency Groups
 # ======================================================================================
-[project.optional-dependencies]
+[dependency-groups]
 dev = [
     "ruff>=0.6.0",
     "mypy>=1.10.0",
