@@ -1,0 +1,10 @@
+#!/bin/bash
+git init
+read -p "Enter your git user.name: " git_name
+read -p "Enter your git user.email: " git_email
+git config --global user.name "$git_name"
+git config --global user.email "$git_email"
+
+git init
+git branch -M main
+# git remote add origin <remote_repository_URL>

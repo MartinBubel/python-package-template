@@ -1,5 +1,12 @@
+#!/bin/bash
+
 # Install Dependencies
-uv sync
+uv sync --group dev
 
 # Install pre-commit hooks
 uv run pre-commit install --install-hooks
+
+{% if cookiecutter.init_git == 'Yes' %}
+# Run git setup script (prompts for user.name and user.email)
+bash /workspace/scripts/setupGit.sh
+{% endif %}
