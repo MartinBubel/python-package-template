@@ -13,7 +13,7 @@ stages:
     # 2. Install the uv binary using the official installer
     - curl -LsSf https://astral.sh/uv/install.sh | sh
     # 3. Add uv to the PATH for subsequent commands
-    - export PATH="/root/.cargo/bin:$PATH"
+    - export PATH="$HOME/.local/bin:$PATH"
     # 4. Verify installation and install project dependencies
     - uv --version
     - uv pip sync --all-extras
