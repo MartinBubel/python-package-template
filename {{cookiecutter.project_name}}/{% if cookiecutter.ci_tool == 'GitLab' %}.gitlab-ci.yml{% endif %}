@@ -4,19 +4,19 @@
 stages:
   - quality
 
+variables:
+  UV_VERSION: "0.8"
+  PYTHON_VERSION: "{{ cookiecutter.python_version }}"
+  BASE_LAYER: bookworm-slim
+  # GitLab CI creates a separate mountpoint for the build directory,
+  # so we need to copy instead of using hard links.
+  UV_LINK_MODE: copy
+
 # Define a reusable base job configuration
 .base_py_job:
-  image: python:{{ cookiecutter.python_version }}-slim
+  image: ghcr.io/astral-sh/uv:$UV_VERSION-python$PYTHON_VERSION-$BASE_LAYER
   before_script:
-    # 1. Install curl to fetch the uv installer
-    - apt-get update && apt-get install -y curl
-    # 2. Install the uv binary using the official installer
-    - curl -LsSf https://astral.sh/uv/install.sh | sh
-    # 3. Add uv to the PATH for subsequent commands
-    - export PATH="$HOME/.local/bin:$PATH"
-    # 4. Verify installation and install project dependencies
-    - uv --version
-    - uv pip sync --all-extras
+    - uv sync --group dev
 
 # --- Job Definitions ---
 
