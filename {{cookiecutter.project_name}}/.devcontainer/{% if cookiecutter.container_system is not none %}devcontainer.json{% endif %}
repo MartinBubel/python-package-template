@@ -11,7 +11,7 @@
   "mounts": [
     "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
   ],
-  "postCreateCommand": "./.devcontainer/postCreateCommand.sh",
+  "postCreateCommand": "bash ./.devcontainer/postCreateCommand.sh",
   "shutdownAction": "stopContainer",
   "customizations": {
     "vscode": {
