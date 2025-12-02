@@ -69,7 +69,7 @@ docstring-code-format = true
 docstring-code-line-length = 100
 
 # ======================================================================================
-# Ty Static Type Checker Configuration (Minimal and fast)
+# Ty Static Type Checker Configuration
 # ======================================================================================
 [tool.ty]
 
