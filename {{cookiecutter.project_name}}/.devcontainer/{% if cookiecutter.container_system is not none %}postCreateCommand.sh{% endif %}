@@ -3,5 +3,7 @@
 # Install Dependencies
 uv sync --group dev
 
+{% if cookiecutter.pre_commit_hooks == 'Yes' %}
 # Install pre-commit hooks
 uv run pre-commit install --install-hooks
+{% endif %}
