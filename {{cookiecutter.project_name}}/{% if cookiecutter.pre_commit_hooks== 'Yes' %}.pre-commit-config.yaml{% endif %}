@@ -23,5 +23,12 @@ repos:
       - id: type-check
         name: ty type check
         entry: uv run ty check
-        language: python
+        language: system
+        types: [python]
         pass_filenames: true
+  
+  - repo: https://github.com/astral-sh/uv-pre-commit
+    rev: 0.11.1
+    hooks:
+      # Update the uv lockfile
+      - id: uv-lock
