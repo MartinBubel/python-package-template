@@ -55,7 +55,7 @@ include = ["**/*.py"]
 [tool.ruff.lint]
 # E/F/W (pycodestyle/pyflakes), B (flake8-bugbear), I (isort), UP (pyupgrade),
 # PT (pytest), PL (pylint subset), RUF (Ruff-specific)
-select = ["E", "F", "W", "B", "I", "UP", "PT", "PL", "RUF", "ANN"]
+select = ["E", "F", "W", "B", "I", "UP", "PT", "PL", "RUF", "ANN", "D"]
 
 [tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["F401"]  # allow re-export patterns
