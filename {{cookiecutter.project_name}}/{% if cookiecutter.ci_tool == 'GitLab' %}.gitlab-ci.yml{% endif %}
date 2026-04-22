@@ -34,6 +34,13 @@ lint:
     - echo "Linting with Ruff..."
     - uv run ruff check .
 
+docstrings:
+  extends: .base_py_job
+  stage: quality
+  script:
+    - echo "Linting NumPy-style docstrings in production Python code..."
+    - uv run ruff check --select D src/{{ cookiecutter.project_slug }}
+
 type-check:
   extends: .base_py_job
   stage: quality
