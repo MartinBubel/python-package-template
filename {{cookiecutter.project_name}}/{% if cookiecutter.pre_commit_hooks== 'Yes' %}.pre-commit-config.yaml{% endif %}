@@ -24,7 +24,7 @@ repos:
         name: ruff numpy docstring check
         entry: uv run ruff check --select D --fix
         language: system
-        files: ^src/itwm_dsp/.*\.py$
+        files: ^src/.*\.py$
         pass_filenames: true
       - id: type-check
         name: ty type check
