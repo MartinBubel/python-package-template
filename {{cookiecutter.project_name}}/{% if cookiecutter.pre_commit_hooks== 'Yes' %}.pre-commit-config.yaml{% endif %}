@@ -20,11 +20,16 @@ repos:
 
   - repo: local
     hooks:
+      - id: docstring-check
+        name: ruff numpy docstring check
+        entry: uv run ruff check --select D --fix
+        language: system
+        files: ^src/itwm_dsp/.*\.py$
+        pass_filenames: true
       - id: type-check
         name: ty type check
         entry: uv run ty check
-        language: system
-        types: [python]
+        language: python
         pass_filenames: true
   
   - repo: https://github.com/astral-sh/uv-pre-commit
